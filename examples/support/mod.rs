@@ -132,7 +132,7 @@ pub fn init(title: &str) -> System {
     }
 
     let mut platform = WinitPlatform::init(&mut imgui);
-    platform.attach_window(imgui.io_mut(), &surface.window(), HiDpiMode::Rounded);
+    platform.attach_window(imgui.io_mut(), surface.window(), HiDpiMode::Rounded);
 
     let hidpi_factor = platform.hidpi_factor();
     let font_size = (13.0 * hidpi_factor) as f32;
@@ -202,7 +202,7 @@ impl System {
             }
             Event::MainEventsCleared => {
                 platform
-                    .prepare_frame(imgui.io_mut(), &surface.window())
+                    .prepare_frame(imgui.io_mut(), surface.window())
                     .expect("Failed to prepare frame");
                 surface.window().request_redraw();
             }
